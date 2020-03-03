@@ -1109,28 +1109,28 @@ void MEM_Init(Section * sec) {
 //save state support
 extern void* VGA_PageHandler_Func[16];
 
-Bit32u Memory_PageHandler_table[] = 
+Bit64u Memory_PageHandler_table[] =
 {
-	(Bit32u) NULL,
-	(Bit32u) &ram_page_handler,
-	(Bit32u) &rom_page_handler,
+	(Bit64u) NULL,
+	(Bit64u) &ram_page_handler,
+	(Bit64u) &rom_page_handler,
 
-	(Bit32u) VGA_PageHandler_Func[0],
-	(Bit32u) VGA_PageHandler_Func[1],
-	(Bit32u) VGA_PageHandler_Func[2],
-	(Bit32u) VGA_PageHandler_Func[3],
-	(Bit32u) VGA_PageHandler_Func[4],
-	(Bit32u) VGA_PageHandler_Func[5],
-	(Bit32u) VGA_PageHandler_Func[6],
-	(Bit32u) VGA_PageHandler_Func[7],
-	(Bit32u) VGA_PageHandler_Func[8],
-	(Bit32u) VGA_PageHandler_Func[9],
-	(Bit32u) VGA_PageHandler_Func[10],
-	(Bit32u) VGA_PageHandler_Func[11],
-	(Bit32u) VGA_PageHandler_Func[12],
-	(Bit32u) VGA_PageHandler_Func[13],
-	(Bit32u) VGA_PageHandler_Func[14],
-	(Bit32u) VGA_PageHandler_Func[15],
+	(Bit64u) VGA_PageHandler_Func[0],
+	(Bit64u) VGA_PageHandler_Func[1],
+	(Bit64u) VGA_PageHandler_Func[2],
+	(Bit64u) VGA_PageHandler_Func[3],
+	(Bit64u) VGA_PageHandler_Func[4],
+	(Bit64u) VGA_PageHandler_Func[5],
+	(Bit64u) VGA_PageHandler_Func[6],
+	(Bit64u) VGA_PageHandler_Func[7],
+	(Bit64u) VGA_PageHandler_Func[8],
+	(Bit64u) VGA_PageHandler_Func[9],
+	(Bit64u) VGA_PageHandler_Func[10],
+	(Bit64u) VGA_PageHandler_Func[11],
+	(Bit64u) VGA_PageHandler_Func[12],
+	(Bit64u) VGA_PageHandler_Func[13],
+	(Bit64u) VGA_PageHandler_Func[14],
+	(Bit64u) VGA_PageHandler_Func[15],
 };
 
 
@@ -1150,12 +1150,12 @@ private:
 
 
 		// assume 256MB max memory
-		size_table = sizeof(Memory_PageHandler_table) / sizeof(Bit32u);
+		size_table = sizeof(Memory_PageHandler_table) / sizeof(Bit64u);
 		for( int lcv=0; lcv<memory.pages; lcv++ ) {
 			pagehandler_idx[lcv] = 0xff;
 
 			for( int lcv2=0; lcv2<size_table; lcv2++ ) {
-				if( (Bit32u) memory.phandlers[lcv] == Memory_PageHandler_table[lcv2] ) {
+				if( (Bit64u) memory.phandlers[lcv] == Memory_PageHandler_table[lcv2] ) {
 					pagehandler_idx[lcv] = lcv2;
 					break;
 				}

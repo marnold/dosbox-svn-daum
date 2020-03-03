@@ -22,11 +22,14 @@
 #include "bios_disk.h"
 #include "../src/dos/cdrom.h"
 
+/*
 #ifdef _MSC_VER
 # define MIN(a,b) ((a) < (b) ? (a) : (b))
 #else
 # define MIN(a,b) std::min(a,b)
 #endif
+*/
+#define MIN(a,b) ((a) < (b) ? (a) : (b))
 
 #define MAX_IDE_CONTROLLERS 8
 

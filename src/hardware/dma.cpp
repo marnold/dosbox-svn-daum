@@ -542,9 +542,9 @@ Bit8u POD_State_Find_DMA_Callback( Bit32u addr )
 {
 	Bit8u size;
 
-	size = sizeof(dma_state_callback_table) / sizeof(Bit32u);
+	size = sizeof(dma_state_callback_table) / sizeof(Bit64u);
 	for( int lcv=0; lcv<size; lcv++ ) {
-		if( (Bit32u) dma_state_callback_table[lcv] == addr ) return lcv;
+		if( (Bit64u) dma_state_callback_table[lcv] == addr ) return lcv;
 	}
 
 
@@ -553,9 +553,9 @@ Bit8u POD_State_Find_DMA_Callback( Bit32u addr )
 }
 
 
-Bit32u POD_State_Index_DMA_Callback( Bit8u index )
+Bit64u POD_State_Index_DMA_Callback( Bit8u index )
 {
-	return (Bit32u) dma_state_callback_table[index];
+	return (Bit64u) dma_state_callback_table[index];
 }
 
 
@@ -564,7 +564,7 @@ void DmaChannel::SaveState( std::ostream& stream )
 	Bit8u dma_callback;
 
 
-	dma_callback = POD_State_Find_DMA_Callback( (Bit32u) (callback) );
+	dma_callback = POD_State_Find_DMA_Callback( (Bit64u) (callback) );
 
 	//******************************************
 	//******************************************
@@ -600,7 +600,7 @@ void DmaChannel::LoadState( std::istream& stream )
 	Bit8u dma_callback;
 
 
-	dma_callback = POD_State_Find_DMA_Callback( (Bit32u) (callback) );
+	dma_callback = POD_State_Find_DMA_Callback( (Bit64u) (callback) );
 
 	//******************************************
 	//******************************************
